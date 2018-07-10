@@ -1,0 +1,92 @@
+{% extends "bootstrap/base.html" %}
+
+{%block content%}
+{% if not msg %}
+  <div class="col-md-3">
+  </div>
+  <div class="row">
+    <form action="{{ url_for('form') }}" method="POST">
+      <div class="col-sm-6 col-md-4">
+        <div align="center" class="thumbnail" style="height:200px;">
+          <div id="img">
+          </div>
+          <div class="caption">
+            Bad hair day? <br>Good hair day?
+            <h4>
+            <span id="desc">
+              <br>What's your zip code?
+            </span>
+            </h4>
+            <br>
+            <div id="info">
+            </div>
+            <div class="input-group">
+              <input class="form-control" id="zip" name="zip" placeholder="Enter your zip code...." type="text" value="33614">
+              <span class="input-group-btn">
+                <input class="btn btn-primary" type="submit" value="Submit">
+                </input>
+              </span>
+              </input>
+            </div>
+            <!-- /input-group -->
+            </br>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endif %}
+{% if msg %}
+  <div class="col-md-3">
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <div align="center" class="thumbnail" style="height:600px;">
+        <div id="img">
+        </div>
+        <div class="caption">
+          <h3>
+          <span id="desc">
+            How's my hair today?
+          </span>
+          </h3>
+          <br>
+          <div id="info">
+            
+            The zip code you entered was <h5>{{zipcode}}</h5>
+            <img src='{{image}}' height='{{image_size}}' width='{{image_size}}'><br>
+            <h4>{{desc}}</h4>
+            Current temperature in {{location}} is: {{temp_f}}<br>
+            Current Dewpoint:<span style='color:{{color}}'>{{dewpoint}}</span><br>
+            Relative Humidity:  <span style='color:{{color}}'>{{humidity}}</span><br>
+            Sky: <img src='{{icon_url}}'>
+            
+            <br><br>
+            <form action="{{ url_for('form') }}" method="POST">
+              
+              Check another Zip Code
+              <div class="input-group">
+                <input class="form-control" id="zip" name="zip" placeholder="Enter your zip code...." type="text" value="33614">
+                <span class="input-group-btn">
+                  <input class="btn btn-primary" type="submit" value="Submit">
+                  </input>
+                </span>
+                </input>
+              </div>
+              <!-- /input-group -->
+            </div>
+            
+            </br>
+            <br>
+            
+            </br>
+            
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+{% endif %}
+{%endblock %}
